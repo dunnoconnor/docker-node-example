@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:184043084967:task-definition/first-run-task-definition:2",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:184043084967:task-definition/first-run-task-definition:3",
     "containerDefinitions": [
         {
             "name": "sauce",
-            "image": "https://hub.docker.com/r/dunnoconnor/saucy-site",
+            "image": "184043084967.dkr.ecr.us-east-1.amazonaws.com/sauce-repo:latest",
             "cpu": 0,
             "links": [],
             "portMappings": [
@@ -42,7 +42,7 @@
     "family": "first-run-task-definition",
     "executionRoleArn": "arn:aws:iam::184043084967:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 2,
+    "revision": 3,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -53,10 +53,16 @@
             "name": "ecs.capability.execution-role-awslogs"
         },
         {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
@@ -75,7 +81,7 @@
     ],
     "cpu": "256",
     "memory": "512",
-    "registeredAt": "2022-06-17T16:35:50.587Z",
+    "registeredAt": "2022-06-17T18:27:28.429Z",
     "registeredBy": "arn:aws:iam::184043084967:root",
     "tags": [
         {
@@ -84,7 +90,7 @@
         },
         {
             "key": "ecs:taskDefinition:stackId",
-            "value": "arn:aws:cloudformation:us-east-1:184043084967:stack/ECS-Console-V2-TaskDefinition-af3ffdce-29a6-4a33-8a27-3a78966eae39/88672b20-ee5b-11ec-92cb-0eeca0bd3025"
+            "value": "arn:aws:cloudformation:us-east-1:184043084967:stack/ECS-Console-V2-TaskDefinition-4b8e661c-1216-43d7-b2a1-ae4d17e4ca3f/20924150-ee6b-11ec-b58c-0e1c47e12f6b"
         }
     ]
 }
