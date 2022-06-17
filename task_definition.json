@@ -3,6 +3,7 @@
   "executionRoleArn": "arn:aws:iam::184043084967:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
+      "name":"sauce",
       "dnsSearchDomains": null,
       "environmentFiles": null,
       "logConfiguration": {
