@@ -44,7 +44,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: ${{ secrets.DOCKER_HUB_USERNAME }}/test:latest
-          run: echo "running test"
+          run: docker logs ${{ secrets.DOCKER_HUB_USERNAME }}/test:latest
   
       - name: Build and push prod
         id: docker_build_prod
