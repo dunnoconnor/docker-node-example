@@ -1,0 +1,34 @@
+name: SonarCloud analysis
+
+on:
+  # Trigger analysis when pushing in main
+  push:
+    branches:
+      - main
+
+
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        args:             
+        # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
+        # mandatory
+          -Dsonar.projectKey=dunnoconnor_docker-node-example
+          -Dsonar.organization=dunnoconnor
+    - name: SonarQube Quality Gate check
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      # Force to fail step after specific time
+      timeout-minutes: 5
+      env:
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+       
