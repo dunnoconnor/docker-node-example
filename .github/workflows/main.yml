@@ -36,14 +36,14 @@ jobs:
         with:
           context: ./
           file: ./Dockerfile
-          push: false
-          tags: test:latest
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/test:latest
           target: test
           
       - name: Run test image
         uses: addnab/docker-run-action@v3
         with:
-          image: test:latest
+          image: ${{ secrets.DOCKER_HUB_USERNAME }}/test:latest
           run: echo "running test"
   
       - name: Build and push prod
